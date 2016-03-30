@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 /**
  *
- * @author acastells
+ * @author alextremp
  */
 @Component
 public class SampleProcessor implements Processor {
@@ -18,8 +18,6 @@ public class SampleProcessor implements Processor {
 	@Override
 	public void process(Exchange exchange) throws Exception {
 		LOG.info(String.format("Received [%s] at [%s]", exchange.getIn().getBody(String.class), getClass().getSimpleName()));
-		exchange.getIn().setBody("Hello at " + System.currentTimeMillis());
-		exchange.getIn().setHeader("CamelHttpPath", exchange.getIn().getHeader("CamelHttpPath", String.class).replaceFirst("/centralapi", ""));
 	}
 
 }
